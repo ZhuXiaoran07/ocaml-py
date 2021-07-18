@@ -31,11 +31,7 @@ let maybe_raise_python_error () =
         C._PyErr_Clear ();
         raise (Python_error res)
 
-let wrap x =
-    if x = null then (
-        maybe_raise_python_error ();
-        raise Invalid_object)
-    else Gc.finalise C._Py_DecRef x; x
+let wrap x = x
 
 
 let wrap_status x =
